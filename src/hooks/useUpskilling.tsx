@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 import { supabase as supabaseTyped } from '@/integrations/supabase/client';
 const supabase = supabaseTyped as any;

@@ -1,5 +1,7 @@
+'use client';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, User, LogOut, Shield, ChevronDown, ChevronUp } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -27,7 +29,7 @@ const Navbar = () => {
   const [mobileMoreOpen, setMobileMoreOpen] = useState(false);
   const [isFreelanceModalOpen, setIsFreelanceModalOpen] = useState(false);
   const [isCommunityForumOpen, setIsCommunityForumOpen] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
   const { user, signOut } = useAuth();
   const { isAdmin } = useAdmin();
 
@@ -65,7 +67,7 @@ const Navbar = () => {
 
   const handleSignOut = async () => {
     await signOut();
-    navigate("/");
+    router.push("/");
   };
 
   const closeMobileMenu = () => {
@@ -75,7 +77,7 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <img src="/jobbyistza.svg" alt="Jobbyist" className="h-10 w-auto" />
         </Link>
 
@@ -89,7 +91,7 @@ const Navbar = () => {
                     <li>
                       <NavigationMenuLink asChild>
                         <Link
-                          to="/jobs"
+                          href="/jobs"
                           className={cn(
                             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                           )}
@@ -107,7 +109,7 @@ const Navbar = () => {
                       <li key={item.name}>
                         <NavigationMenuLink asChild>
                           <Link
-                            to={item.href}
+                            href={item.href}
                             className={cn(
                               "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             )}
@@ -135,7 +137,7 @@ const Navbar = () => {
                         {categoryMenuItems.map((item) => (
                           <li key={item.name}>
                             <NavigationMenuLink asChild>
-                              <Link to={item.href} className="block rounded-md p-2 text-sm hover:bg-accent">{item.name}</Link>
+                              <Link href={item.href} className="block rounded-md p-2 text-sm hover:bg-accent">{item.name}</Link>
                             </NavigationMenuLink>
                           </li>
                         ))}
@@ -156,7 +158,7 @@ const Navbar = () => {
                       {byJobTypeItems.map((item) => (
                         <li key={item.name}>
                           <NavigationMenuLink asChild>
-                            <Link to={item.href} className="block rounded-md p-2 text-sm hover:bg-accent">{item.name}</Link>
+                            <Link href={item.href} className="block rounded-md p-2 text-sm hover:bg-accent">{item.name}</Link>
                           </NavigationMenuLink>
                         </li>
                       ))}
@@ -178,7 +180,7 @@ const Navbar = () => {
                           <li key={item.name}>
                             <NavigationMenuLink asChild>
                               <Link
-                                to={item.href}
+                                href={item.href}
                                 className={cn(
                                   "block select-none rounded-md p-2 text-sm no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground",
                                 )}
@@ -199,7 +201,7 @@ const Navbar = () => {
                           <li key={item.name}>
                             <NavigationMenuLink asChild>
                               <Link
-                                to={item.href}
+                                href={item.href}
                                 className={cn(
                                   "block select-none rounded-md p-2 text-sm no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground",
                                 )}
@@ -234,7 +236,7 @@ const Navbar = () => {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link to="/pro">
+                <Link href="/pro">
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Become A Pro
                   </NavigationMenuLink>
@@ -255,14 +257,14 @@ const Navbar = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem asChild>
-                  <Link to="/profile" className="cursor-pointer">
+                  <Link href="/profile" className="cursor-pointer">
                     <User className="h-4 w-4 mr-2" />
                     My Profile
                   </Link>
                 </DropdownMenuItem>
                 {isAdmin && (
                   <DropdownMenuItem asChild>
-                    <Link to="/admin" className="cursor-pointer">
+                    <Link href="/admin" className="cursor-pointer">
                       <Shield className="h-4 w-4 mr-2" />
                       Admin Panel
                     </Link>
@@ -277,10 +279,10 @@ const Navbar = () => {
             </DropdownMenu>
           ) : (
             <>
-              <Link to="/auth">
+              <Link href="/auth">
                 <Button variant="ghost" size="sm">Sign In</Button>
               </Link>
-              <Link to="/pro">
+              <Link href="/pro">
                 <Button variant="brand" size="sm">Become A Pro</Button>
               </Link>
             </>
@@ -300,7 +302,7 @@ const Navbar = () => {
         <div className="md:hidden bg-background border-b border-border animate-slide-up">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-1">
             <Link
-              to="/jobs"
+              href="/jobs"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2.5"
               onClick={closeMobileMenu}
             >
@@ -319,7 +321,7 @@ const Navbar = () => {
                 {locationMenuItems.map((item) => (
                   <Link
                     key={item.name}
-                    to={item.href}
+                    href={item.href}
                     className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-1.5"
                     onClick={closeMobileMenu}
                   >
@@ -341,7 +343,7 @@ const Navbar = () => {
                 {categoryMenuItems.map((item) => (
                   <Link
                     key={item.name}
-                    to={item.href}
+                    href={item.href}
                     className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-1.5"
                     onClick={closeMobileMenu}
                   >
@@ -363,7 +365,7 @@ const Navbar = () => {
                 {byJobTypeItems.map((item) => (
                   <Link
                     key={item.name}
-                    to={item.href}
+                    href={item.href}
                     className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-1.5"
                     onClick={closeMobileMenu}
                   >
@@ -385,7 +387,7 @@ const Navbar = () => {
                 {careerToolkitItems.map((item) => (
                   <Link
                     key={item.name}
-                    to={item.href}
+                    href={item.href}
                     className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-1.5"
                     onClick={closeMobileMenu}
                   >
@@ -395,7 +397,7 @@ const Navbar = () => {
                 {moreItems.map((item) => (
                   <Link
                     key={item.name}
-                    to={item.href}
+                    href={item.href}
                     className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-1.5"
                     onClick={closeMobileMenu}
                   >
@@ -428,7 +430,7 @@ const Navbar = () => {
             <div className="flex flex-col gap-2 pt-4 border-t border-border">
               {user ? (
                 <>
-                  <Link to="/profile" onClick={closeMobileMenu}>
+                  <Link href="/profile" onClick={closeMobileMenu}>
                     <Button variant="ghost" className="w-full justify-center">My Profile</Button>
                   </Link>
                   <Button variant="outline" className="w-full justify-center" onClick={handleSignOut}>
@@ -437,10 +439,10 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <Link to="/auth" onClick={closeMobileMenu}>
+                  <Link href="/auth" onClick={closeMobileMenu}>
                     <Button variant="ghost" className="w-full justify-center">Sign In</Button>
                   </Link>
-                  <Link to="/pro" onClick={closeMobileMenu}>
+                  <Link href="/pro" onClick={closeMobileMenu}>
                     <Button variant="brand" className="w-full justify-center">Become A Pro</Button>
                   </Link>
                 </>

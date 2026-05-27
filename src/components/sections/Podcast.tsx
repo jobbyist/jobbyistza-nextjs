@@ -1,7 +1,8 @@
+'use client';
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Play, Pause, Headphones, ArrowRight, Clock } from "lucide-react";
-import podcastThumbnail from "@/assets/podcast-episode-1.png";
+const podcastThumbnail = '/assets/podcast-episode-1.png';
 
 const Podcast = () => {
   const [isPlaying, setIsPlaying] = useState(false);

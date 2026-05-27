@@ -1,6 +1,7 @@
+'use client';
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Briefcase, Building2, TrendingUp, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import {
   Dialog,
@@ -8,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import digitalLabourMarketReportVideoUrl from "../../../reference/digital-job-market-report.mp4?url";
+const digitalLabourMarketReportVideoUrl = "/digital-job-market-report.mp4";
 
 const Hero = () => {
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
@@ -65,13 +66,13 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up" style={{ animationDelay: "0.2s" }}>
-            <Link to="/jobs">
+            <Link href="/jobs">
               <Button variant="hero" size="xl" className="group">
                 Find Jobs in South Africa
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Link to="/recruitment-suite">
+            <Link href="/recruitment-suite">
               <Button variant="hero-outline" size="xl" className="btn-gradient-border">
                 For Employers &amp; Recruiters
               </Button>

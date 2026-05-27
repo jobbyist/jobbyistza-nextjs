@@ -1,3 +1,4 @@
+'use client';
 import { useEffect } from 'react';
 
 // Extend the Window interface to include adsbygoogle

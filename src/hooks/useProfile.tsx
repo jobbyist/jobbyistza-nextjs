@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
@@ -99,7 +100,8 @@ export function useProfile() {
       const dbUpdates: Partial<Profile> = { ...updates };
       const { error } = await supabase
         .from('profiles')
-        .update(dbUpdates)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .update(dbUpdates as any)
         .eq('user_id', user.id);
 
       if (error) throw error;

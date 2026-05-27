@@ -1,3 +1,5 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -5,7 +7,6 @@ import { MatchScoreBadge } from './MatchScoreBadge';
 import { JobMatch } from '@/hooks/useJobMatcher';
 import { formatSalaryRange } from '@/lib/utils';
 import { MapPin, Briefcase, DollarSign, Clock, Building2, ExternalLink, Bookmark, Eye } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { formatDistanceToNow } from 'date-fns';
 
 interface JobData {
@@ -29,14 +30,14 @@ interface MatchedJobCardProps {
 }
 
 export function MatchedJobCard({ match, onStatusChange, onApply }: MatchedJobCardProps) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const job = match.job as unknown as JobData | undefined;
 
   if (!job) return null;
 
   const handleViewDetails = () => {
     onStatusChange(match.id, 'viewed');
-    navigate(`/job/${job.id}`);
+    router.push(`/job/${job.id}`);
   };
 
   const handleSave = () => {

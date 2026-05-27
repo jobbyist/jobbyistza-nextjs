@@ -1,13 +1,14 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, ArrowRight, Wifi, Loader2 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { useJobs } from "@/hooks/useJobs";
 import { generateJobListSchema } from "@/components/SEOHead";
 import { useEffect } from "react";
 
 const FeaturedJobs = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { jobs, loading } = useJobs({ country: 'ZA', limit: 6 });
 
   // Add structured data for featured jobs
@@ -77,7 +78,7 @@ const FeaturedJobs = () => {
               <div
                 key={job.id}
                 className="group bg-card rounded-xl p-6 border border-border hover:border-primary/20 hover:shadow-xl transition-all duration-300 cursor-pointer"
-                onClick={() => navigate(`/jobs/${job.id}`)}
+                onClick={() => router.push(`/jobs/${job.id}`)}
               >
                 {/* Header */}
                 <div className="flex items-start gap-4 mb-4">
@@ -140,7 +141,7 @@ const FeaturedJobs = () => {
                 {/* Apply button */}
                 <Button variant="default" className="w-full group/btn" onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/jobs/${job.id}`);
+                  router.push(`/jobs/${job.id}`);
                 }}>
                   View Details
                   <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -151,7 +152,7 @@ const FeaturedJobs = () => {
         )}
 
         <div className="text-center">
-          <Button variant="brand" size="lg" className="group" onClick={() => navigate('/jobs')}>
+          <Button variant="brand" size="lg" className="group" onClick={() => router.push('/jobs')}>
             Browse All Jobs
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>

@@ -1,9 +1,10 @@
+'use client';
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Link } from "react-router-dom";
 import CompanyLogo from "@/components/ui/company-logo";
 
 const FeaturedCompanies = () => {
@@ -46,7 +47,7 @@ const FeaturedCompanies = () => {
             companies.map((company) => (
               <Link
                 key={company.id}
-                to={`/company/${company.slug}`}
+                href={`/company/${company.slug}`}
                 className="group bg-card rounded-xl p-6 border border-border hover:border-primary/20 hover:shadow-lg transition-all duration-300 cursor-pointer"
               >
                 <CompanyLogo 
@@ -69,7 +70,7 @@ const FeaturedCompanies = () => {
         </div>
 
         <div className="text-center">
-          <Link to="/companies">
+          <Link href="/companies">
             <Button variant="outline" className="group">
               View All Companies
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />

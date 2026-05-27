@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 import { useAuth } from './useAuth';
 import { toast } from 'sonner';

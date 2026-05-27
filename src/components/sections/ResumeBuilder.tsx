@@ -1,7 +1,8 @@
+'use client';
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Target, CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const benefits = [
   "Automatic job scanning across multiple sites",
@@ -38,7 +39,7 @@ const ResumeBuilder = () => {
                 ))}
               </ul>
 
-              <Link to="/job-matcher">
+              <Link href="/job-matcher">
                 <Button variant="brand" size="lg" className="group">
                   Get Started with Job Matcher
                   <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -65,7 +66,7 @@ const ResumeBuilder = () => {
                   based on your resume and career goals.
                 </p>
 
-                <Link to="/job-matcher">
+                <Link href="/job-matcher">
                   <Button variant="outline" className="w-full group">
                     <Sparkles className="h-4 w-4 mr-2 text-primary" />
                     How It Works

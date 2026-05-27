@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 import { supabase as supabaseTyped } from '@/integrations/supabase/client';
 // Tables `follows` not yet in DB schema — cast to any to keep build green

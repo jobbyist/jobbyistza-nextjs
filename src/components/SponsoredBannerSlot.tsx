@@ -1,3 +1,5 @@
+'use client';
+import { usePathname } from 'next/navigation';
 /**
  * SponsoredBannerSlot
  *
@@ -10,7 +12,6 @@
  * Hidden on blocked routes (legal, auth, onboarding, sensitive flows).
  */
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { useSubscription } from '@/hooks/useSubscription';
 import { isBannerAllowedOnPath, type SlotKey } from '@/lib/sponsoredBannerConfig';
 import GoogleAdsense from '@/components/GoogleAdsense';
@@ -96,7 +97,7 @@ interface SponsoredBannerSlotProps {
 }
 
 const SponsoredBannerSlot = ({ slotKey, className = '' }: SponsoredBannerSlotProps) => {
-  const { pathname } = useLocation();
+  const pathname = usePathname();
   const { isPremium, loading: subLoading } = useSubscription();
 
   // Block on restricted routes

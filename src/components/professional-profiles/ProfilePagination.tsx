@@ -1,6 +1,7 @@
+'use client';
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Link } from "react-router-dom";
 
 interface ProfilePaginationProps {
   currentPage: number;
@@ -55,7 +56,7 @@ export const ProfilePagination = ({ currentPage, totalPages, baseUrl }: ProfileP
     >
       {/* Previous Button */}
       {currentPage > 1 ? (
-        <Link to={getPageUrl(currentPage - 1)}>
+        <Link href={getPageUrl(currentPage - 1)}>
           <Button
             variant="outline"
             size="sm"
@@ -100,7 +101,7 @@ export const ProfilePagination = ({ currentPage, totalPages, baseUrl }: ProfileP
           return (
             <Link 
               key={pageNumber} 
-              to={getPageUrl(pageNumber)}
+              href={getPageUrl(pageNumber)}
               aria-label={`Go to page ${pageNumber}`}
               aria-current={isActive ? "page" : undefined}
             >
@@ -118,7 +119,7 @@ export const ProfilePagination = ({ currentPage, totalPages, baseUrl }: ProfileP
 
       {/* Next Button */}
       {currentPage < totalPages ? (
-        <Link to={getPageUrl(currentPage + 1)}>
+        <Link href={getPageUrl(currentPage + 1)}>
           <Button
             variant="outline"
             size="sm"

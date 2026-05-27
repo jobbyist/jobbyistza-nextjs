@@ -1,5 +1,6 @@
+'use client';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -69,7 +70,7 @@ const ApplicationTracker = ({ userId }: ApplicationTrackerProps) => {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setApplications(data || []);
+      setApplications((data || []) as unknown as Application[]);
     } catch (error) {
       console.error('Error fetching applications:', error);
     } finally {
@@ -234,7 +235,7 @@ const ApplicationTracker = ({ userId }: ApplicationTrackerProps) => {
                   : `You don't have any ${filter} applications at the moment`}
               </p>
               {filter === 'all' && (
-                <Link to="/jobs">
+                <Link href="/jobs">
                   <Button>Browse Jobs</Button>
                 </Link>
               )}
@@ -303,7 +304,7 @@ const ApplicationTracker = ({ userId }: ApplicationTrackerProps) => {
                       </div>
 
                       {/* Actions */}
-                      <Link to={`/job/${application.job?.id}`}>
+                      <Link href={`/job/${application.job?.id}`}>
                         <Button variant="outline" size="sm">
                           View Job <ExternalLink className="h-3 w-3 ml-1" />
                         </Button>
