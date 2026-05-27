@@ -1,0 +1,22 @@
+project_id = "vkwnhhwacizjiwusbmcm"
+
+[functions.create-admin-user]
+verify_jwt = true
+
+[functions.scrape-jobs]
+verify_jwt = false
+
+[functions.create-admin-user]
+verify_jwt = false
+
+[functions.import-jobs]
+verify_jwt = false
+
+[functions.auto-publish-jobs]
+verify_jwt = false
+
+[functions.firecrawl-scrape]
+verify_jwt = false
+
+[functions.scrape-sa-jobs]
+verify_jwt = false
