@@ -1,10 +1,11 @@
+'use client';
+import { usePathname } from 'next/navigation';
 import { useState } from "react";
 import { MessageCircle, X, Send, User, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
-import { useLocation } from "react-router-dom";
 
 interface Message {
   id: number;
@@ -19,7 +20,7 @@ const PREWRITTEN_QUERIES = [
 ];
 
 const ConciergeChat = () => {
-  const { pathname } = useLocation();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {

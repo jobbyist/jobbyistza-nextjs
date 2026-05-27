@@ -1,5 +1,5 @@
-import yuteLogo from "../../../reference/yute.svg";
-import monogamyLogo from "../../../reference/monogamy.svg";
+const yuteLogo = '/yute.svg';
+const monogamyLogo = '/monogamy.svg';
 
 const platforms = [
   {

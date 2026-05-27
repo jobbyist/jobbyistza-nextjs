@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import RelatedPlatformsSection from '@/components/layout/RelatedPlatformsSection';
 import CommunityForumModal from '@/components/CommunityForumModal';
@@ -26,7 +27,7 @@ const RELATED_PLATFORMS_BLOCKED_PREFIXES = [
 ];
 
 const Footer = () => {
-  const { pathname } = useLocation();
+  const pathname = usePathname();
   const [isCommunityForumOpen, setIsCommunityForumOpen] = useState(false);
   const footerLinks = {
     "For Job Seekers": [
@@ -148,7 +149,7 @@ const Footer = () => {
                         </a>
                       ) : (
                         <Link
-                          to={link.href}
+                          href={link.href}
                           className="text-sm text-white/70 hover:text-white transition-colors"
                         >
                           {link.name}

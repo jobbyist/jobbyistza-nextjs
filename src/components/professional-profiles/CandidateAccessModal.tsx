@@ -1,8 +1,9 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Crown, Building2 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 interface CandidateAccessModalProps {
   isOpen: boolean;
@@ -11,16 +12,16 @@ interface CandidateAccessModalProps {
 }
 
 export const CandidateAccessModal = ({ isOpen, onClose, profileId }: CandidateAccessModalProps) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleJobseekerUpgrade = () => {
-    navigate("/pro");
+    router.push("/pro");
     onClose();
   };
 
   const handleRecruiterUpgrade = () => {
     // TODO: Update with actual Recruitment Suite route when available
-    navigate("/pro");
+    router.push("/pro");
     onClose();
   };
 

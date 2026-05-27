@@ -1,5 +1,6 @@
+'use client';
+import Link from 'next/link';
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -68,7 +69,7 @@ const SavedJobsCard = () => {
             <Bookmark className="h-8 w-8 mx-auto mb-2 opacity-50" />
             No saved jobs yet. Tap the save icon on any job to keep it here.
             <div className="mt-4">
-              <Button asChild variant="outline" size="sm"><Link to="/jobs">Browse jobs</Link></Button>
+              <Button asChild variant="outline" size="sm"><Link href="/jobs">Browse jobs</Link></Button>
             </div>
           </div>
         )}
@@ -85,7 +86,7 @@ const SavedJobsCard = () => {
             <div className="flex items-center gap-1 shrink-0">
               {r.job && (
                 <Button asChild size="sm" variant="ghost">
-                  <Link to={`/job/${r.job.id}`}><ExternalLink className="h-4 w-4" /></Link>
+                  <Link href={`/job/${r.job.id}`}><ExternalLink className="h-4 w-4" /></Link>
                 </Button>
               )}
               <Button size="sm" variant="ghost" onClick={() => remove(r.id)} aria-label="Remove">

@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useMemo, useState } from "react";
 import type { FocusEvent } from "react";
 import {
@@ -9,18 +10,18 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import homepageLogo01 from "../../../homepageassets/1.svg";
-import homepageLogo02 from "../../../homepageassets/2.svg";
-import homepageLogo03 from "../../../homepageassets/3.svg";
-import homepageLogo04 from "../../../homepageassets/4.svg";
-import homepageLogo05 from "../../../homepageassets/5.svg";
-import homepageLogo06 from "../../../homepageassets/6.svg";
-import homepageLogo07 from "../../../homepageassets/7.svg";
-import homepageLogo08 from "../../../homepageassets/8.svg";
-import homepageLogo09 from "../../../homepageassets/9.svg";
-import homepageLogo10 from "../../../homepageassets/10.svg";
-import homepageLogo11 from "../../../homepageassets/11.svg";
-import homepageLogo12 from "../../../homepageassets/12.svg";
+const homepageLogo01 = '/homepageassets/1.svg';
+const homepageLogo02 = '/homepageassets/2.svg';
+const homepageLogo03 = '/homepageassets/3.svg';
+const homepageLogo04 = '/homepageassets/4.svg';
+const homepageLogo05 = '/homepageassets/5.svg';
+const homepageLogo06 = '/homepageassets/6.svg';
+const homepageLogo07 = '/homepageassets/7.svg';
+const homepageLogo08 = '/homepageassets/8.svg';
+const homepageLogo09 = '/homepageassets/9.svg';
+const homepageLogo10 = '/homepageassets/10.svg';
+const homepageLogo11 = '/homepageassets/11.svg';
+const homepageLogo12 = '/homepageassets/12.svg';
 
 type PartnerLogo = {
   name: string;
@@ -112,8 +113,8 @@ const PartnerLogoCarousel = ({ logos = defaultLogos }: PartnerLogoCarouselProps)
                   <div className="h-[126px] rounded-xl border border-border/80 bg-background/90 p-4 flex items-center justify-center">
                     {hasRealLogos && "src" in logo ? (
                       <img
-                        src={logo.src}
-                        alt={logo.alt}
+                        src={logo.src as string}
+                        alt={(logo as PartnerLogo).alt}
                         loading="lazy"
                         className="max-h-14 w-auto object-contain"
                       />

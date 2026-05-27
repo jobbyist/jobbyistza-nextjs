@@ -1,7 +1,8 @@
+'use client';
+import { useRouter } from 'next/navigation';
 // New Huzzle-inspired multi-step onboarding flow.
 // Steps: Basics → Profile picture → Resume → Pro plan → Account → Welcome
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,11 +15,11 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { ArrowLeft, ArrowRight, Upload, FileText, Crown, Sparkles, User, Mail, Lock, MapPin, Phone, Loader2, Check } from "lucide-react";
-import welcomeHero from "@/assets/welcome-hero.png";
+const welcomeHero = '/assets/welcome-hero.png';
 const TOTAL = 5;
 
 const MultiStepSignup = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { signUp, signIn, user } = useAuth();
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
@@ -164,7 +165,7 @@ const MultiStepSignup = () => {
         <p className="text-muted-foreground mb-6 max-w-md">
           Check your email for further details and click the link to verify your email and activate your account.
         </p>
-        <Button size="lg" className="gradient-brand" onClick={() => navigate("/profile")}>
+        <Button size="lg" className="gradient-brand" onClick={() => router.push("/profile")}>
           Get Started <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </div>

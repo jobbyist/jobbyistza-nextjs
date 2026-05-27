@@ -1,7 +1,8 @@
+'use client';
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Settings, Users, CreditCard, Calendar } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const features = [
   {
@@ -55,7 +56,7 @@ const RecruitmentSuite = () => {
             ))}
           </div>
 
-          <Link to="/recruitment-suite">
+          <Link href="/recruitment-suite">
             <Button 
               size="lg" 
               className="gradient-brand text-white hover:opacity-95"

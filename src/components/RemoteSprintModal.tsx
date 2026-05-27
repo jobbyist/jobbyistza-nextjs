@@ -1,16 +1,17 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Target, Users, TrendingUp } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 const STORAGE_KEY = "remote_sprint_modal_last_shown_at_v2";
 const TRIGGER_MS = 120 * 1000; // Show the modal 120 seconds after the app loads.
 const RETURN_VISITOR_DELAY_MS = 30 * 24 * 60 * 60 * 1000; // Wait 30 days before showing the modal again.
 
 const RemoteSprintModal = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -62,7 +63,7 @@ const RemoteSprintModal = () => {
 
         <DialogFooter className="gap-2 sm:gap-2">
           <Button variant="ghost" onClick={() => setOpen(false)}>Maybe later</Button>
-          <Button variant="brand" onClick={() => { setOpen(false); navigate("/30-day-job-sprint"); }}>
+          <Button variant="brand" onClick={() => { setOpen(false); router.push("/30-day-job-sprint"); }}>
             Find Out More
           </Button>
         </DialogFooter>

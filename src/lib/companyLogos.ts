@@ -1,13 +1,13 @@
-import absaLogo from '../../companylogos/absa.svg';
-import discoveryLogo from '../../companylogos/discovery.svg';
-import econoLogo from '../../companylogos/econo.svg';
-import fnbLogo from '../../companylogos/fnb.svg';
-import mtnLogo from '../../companylogos/mtn.svg';
-import nedbankLogo from '../../companylogos/nedbank.svg';
-import sanlamLogo from '../../companylogos/sanlam.svg';
-import shopriteLogo from '../../companylogos/shoprite.svg';
-import standardLogo from '../../companylogos/standard.svg';
-import vodacomLogo from '../../companylogos/vodacom.svg';
+const absaLogo = '/companylogos/absa.svg';
+const discoveryLogo = '/companylogos/discovery.svg';
+const econoLogo = '/companylogos/econo.svg';
+const fnbLogo = '/companylogos/fnb.svg';
+const mtnLogo = '/companylogos/mtn.svg';
+const nedbankLogo = '/companylogos/nedbank.svg';
+const sanlamLogo = '/companylogos/sanlam.svg';
+const shopriteLogo = '/companylogos/shoprite.svg';
+const standardLogo = '/companylogos/standard.svg';
+const vodacomLogo = '/companylogos/vodacom.svg';
 
 const companyLogoPatterns: Array<{ pattern: RegExp; logoUrl: string }> = [
   { pattern: /\bdiscovery\b/, logoUrl: discoveryLogo },
